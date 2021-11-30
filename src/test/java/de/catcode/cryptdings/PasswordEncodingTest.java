@@ -9,7 +9,7 @@ import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-public class PasswordEncodingTest {
+class PasswordEncodingTest {
 
     @Test
     void testPasswordEncoding() throws UnsupportedEncodingException {
