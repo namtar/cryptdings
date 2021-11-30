@@ -7,12 +7,10 @@ Dabei stellen sich verschiedene Fragen.
 * Wie lang soll ein Salt sein?
 * Ist es ok, den Salt mitzuübertragen?
 * Wo wird der Salt als Präfix davorgehangen?
+* Wie geht man mit der IV (Initialization Vector) um?
 
-Mit dem erzeugten Secret Key sollen zwei Dinge getan werden.
-
-1. Er soll via RSA gewrapped und uwrapped werden
-2. Es soll etwas im Betriebsmodus GCM ver- und entschlüsselt werden.
-3. Wie lang ist eine IV und wo wird diese davorgehangen? 
+Im Beispiel wird u.a ausprobiert wie man über ein Passwort-Ableitungs-Verfahren einen Secret Key auf Sender
+und Empfängerseite erzeugt. Dabei müssen Salt und IV mit zum Empfänger übertragen werden.
 
 Was ist der OCB Betriebsmodus und wie kann er verwendet werden.
 https://stackoverflow.com/questions/1220751/how-to-choose-an-aes-encryption-mode-cbc-ecb-ctr-ocb-cfb
