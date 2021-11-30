@@ -17,7 +17,11 @@ Mit dem erzeugten Secret Key sollen zwei Dinge getan werden.
 Was ist der OCB Betriebsmodus und wie kann er verwendet werden.
 https://stackoverflow.com/questions/1220751/how-to-choose-an-aes-encryption-mode-cbc-ecb-ctr-ocb-cfb
 
-## RFC8018
+## RFC8018 bzw RFC2898
+RFC8018 scheint der führendere zu sein.
+
+https://www.rfc-editor.org/rfc/rfc2898  
+https://www.rfc-editor.org/rfc/rfc8018
 
 Im RFC wird zur Passwort Wahl folgendes gesagt.
 
@@ -57,3 +61,22 @@ Zum Salt findet sich dieses.
     additional data is left to the application.
 ```
 Das bedeutet für 1. mindestens 8 bytes.
+
+## Salt
+Das Salt sollte eine Länge von mindestens 64bit (8 Bytes) haben.
+Das Salt muss für jeden verwendeten Schlüssel neu und zufällig (echter Zufall) erzeugt werden.
+Das Salt darf öffentlich bekannt sein und kann z.B. zur einfacheren Übertragung vorne an das Chiffrat angehangen werden.
+
+Das Salt erschwert durch seine Zufälligkeit das Vorberechnen von Hashes in Form von Rainbow Tables.
+Zudem verhindert es, dass bei gleichem Passwort immer der gleiche Hash herauskommt.
+
+## Iterationen
+Der Iteration Count beim Passwort-Ableitungs-Verfahren wird benutzt um die Hash Erzeugung konfigurierbar langsam zu machen.
+Dadurch wird es schwerer für Angreifer via Brute-Force alle Passwort und Salt Kombinationen durchzuprobieren, da
+das Hash-Verfahren an sich den Anfreifer ausbremst. Daher nutzt man dafür PBKDF2 oder bcrypt.
+
+## Links
+* https://crypto.stackexchange.com/questions/18765/maximum-password-length-in-pbkdf2
+* https://crypto.stackexchange.com/questions/34276/what-is-the-difference-between-pbe-and-symmetric-key-encryption
+* https://crypto.stackexchange.com/questions/1662/how-can-one-securely-generate-an-asymmetric-key-pair-from-a-short-passphrase
+* https://www.rfc-editor.org/rfc/rfc2898
